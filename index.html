@@ -2,286 +2,416 @@
 <html lang="en" dir="rtl">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقييم الأداء</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقييم الأداء</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div
-    class="grid grid-cols-2 items-center gap-8 bg-white shadow-lg rounded-2xl p-8 mt-10 border border-gray-100 grid-1 mx-auto">
-    <!-- Header -->
-    <div class="space-y-2 text-right">
-      <h1 class="text-2xl font-bold text-gray-800">جيزة باور للصناعة</h1>
-      <p class="text-gray-600 font-medium">إدارة الموارد البشرية</p>
-      <p class="text-gray-700">تقييم أداء</p>
-      <p id="quarter-info" class="text-gray-500 text-sm italic"></p>
-    </div>
+    <div class="grid grid-cols-2 items-center gap-8 bg-white shadow-lg rounded-2xl p-8 mt-10 border border-gray-100 grid-1 mx-auto">
+        <!-- Header -->
+        <div class="space-y-2 text-right">
+            <h1 class="text-2xl font-bold text-gray-800">جيزة باور للصناعة</h1>
+            <p class="text-gray-600 font-medium">إدارة الموارد البشرية</p>
+            <p class="text-gray-700">تقييم أداء</p>
+            <p id="quarter-info" class="text-gray-500 text-sm italic"></p>
+        </div>
+        <div class="flex justify-end">
+            <img src="logo.png" alt="Giza Power Industry Logo" class="logo">
+        </div>
+        <!-- Dropdowns -->
+        <div class="grid grid-cols-3 gap-4 col-span-2">
+            <div class="flex items-center gap-2">
+                <label for="countries1" class="text-sm font-medium text-dark">القسم :</label>
+                <select id="countries1" class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected></option>
+                    <option value="production">الانتاج</option>
+                    <option value="isolation">العزل والجدل</option>
+                    <option value="packaging">التغليف</option>
+                    <option value="hr">الموارد البشرية</option>
+                </select>
+            </div>
 
-    <div class="flex justify-end">
-      <img src="logo.png" alt="Giza Power Industry Logo" class="logo">
-    </div>
+            <div class="flex items-center gap-2">
+                <label for="countries2" class="text-sm font-medium text-dark">الوظيفة :</label>
+                <select id="countries2" class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected></option>
+                    <option value="worker">عامل</option>
+                    <option value="supervisor">مشرف</option>
+                    <option value="manager">مدير</option>
+                </select>
+            </div>
 
-    <!-- Dropdowns -->
-    <div class="grid grid-cols-3 gap-4 col-span-2">
-      <div class="flex items-center gap-2">
-        <label for="countries1" class="text-sm font-medium text-dark">القسم:</label>
-        <select id="countries1"
-          class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500">
-          <option selected></option>
-          <option value="production">الانتاج</option>
-          <option value="isolation">العزل والجدل</option>
-          <option value="packaging">التغليف</option>
-          <option value="hr">الموارد البشرية</option>
-        </select>
-      </div>
+            <div class="flex items-center gap-2">
+                <label for="countries3" class="text-sm font-medium text-dark">الموظفين :</label>
+                <select id="countries3" class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected></option>
+                    <option value="emp1">محمد</option>
+                    <option value="emp2">أحمد</option>
+                    <option value="emp3">علي</option>
+                </select>
+            </div>
+        </div>
 
-      <div class="flex items-center gap-2">
-        <label for="countries2" class="text-sm font-medium text-dark">الوظيفة:</label>
-        <select id="countries2"
-          class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm p-2.5 focus:ring-blue-500 focus:border-blue-500">
-          <option selected></option>
-          <option value="worker">عامل</option>
-          <option value="supervisor">مشرف</option>
-          <option value="manager">مدير</option>
-        </select>
-      </div>
+        <!-- Info Table -->
+        <div class="w-full mx-auto mt-3 col-span-2 float-right">
+            <div class="overflow-hidden rounded-sm shadow-sm border border-gray-300">
+                <table class="table-auto w-full text-right border-collapse">
+                    <tbody>
+                        <tr class="bg-gray-100">
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">الاسم :</td>
+                            <td class="border border-gray-200 px-4 py-2 bg-gray-50">محمد</td>
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">الكود :</td>
+                            <td class="border border-gray-200 px-4 py-2 bg-gray-50">207</td>
+                        </tr>
 
-      <div class="flex items-center gap-2">
-        <label for="countries3" class="text-sm font-medium text-dark">الموظفين:</label>
-        <select id="countries3"
-          class="w-50 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm p-2.5 focus:ring-blue-500 focus:border-blue-500">
-          <option selected></option>
-          <option value="emp1">محمد</option>
-          <option value="emp2">أحمد</option>
-          <option value="emp3">علي</option>
-        </select>
-      </div>
-    </div>
+                        <tr class="bg-gray-100">
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">الوظيفة :</td>
+                            <td class="border border-gray-200 px-4 py-2 bg-gray-50">اداري</td>
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">القسم :</td>
+                            <td class="border border-gray-200 px-4 py-2 bg-gray-50">ورشة النجارة</td>
+                        </tr>
 
-    <!-- Info Table -->
-    <div class="w-full mx-auto mt-3 col-span-2 float-right">
-      <div class="overflow-hidden rounded-sm shadow-sm border border-gray-300">
-        <table class="table-auto w-full text-right border-collapse">
-          <tbody>
-            <tr class="bg-gray-100">
-              <td class="border border-gray-200 px-4 py-2 font-semibold">الاسم :</td>
-              <td class="border border-gray-200 px-4 py-2 bg-gray-50">محمد</td>
-              <td class="border border-gray-200 px-4 py-2 font-semibold">الكود :</td>
-              <td class="border border-gray-200 px-4 py-2 bg-gray-50">207</td>
-            </tr>
+                        <tr class="bg-gray-100">
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">بداية فترة التقييم</td>
+                            <td id="start-date" class="border border-gray-200 px-4 py-2 bg-gray-50"></td>
+                            <td class="border border-gray-200 px-4 py-2 font-semibold">نهاية فترة التقييم</td>
+                            <td id="end-date" class="border border-gray-200 px-4 py-2 bg-gray-50"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <tr class="bg-gray-100">
-              <td class="border border-gray-200 px-4 py-2 font-semibold">الوظيفة :</td>
-              <td class="border border-gray-200 px-4 py-2 bg-gray-50">اداري</td>
-              <td class="border border-gray-200 px-4 py-2 font-semibold">القسم :</td>
-              <td class="border border-gray-200 px-4 py-2 bg-gray-50">ورشة النجارة</td>
-            </tr>
+        <div class="col-span-2 text-center">
+            <p>تقييم الأداء الربع سنوى من 1 إلى 10</p>
+        </div>
+        <!-- Rating Table -->
+        <table class="min-w-full border border-gray-300 text-sm text-right bg-white shadow-sm rounded-sm col-span-2">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="border border-gray-300 p-3 w-1/2 font-semibold">عامل التقييم</th>
+                    <th class="border border-gray-300 p-3 w-1/6 font-semibold text-center">التقييم (0–10)</th>
+                    <th class="border border-gray-300 p-3 w-1/3 font-semibold text-center">ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody id="ratingTable">
+                <tr>
+                    <td class="border border-gray-300 p-3">مدى مساهمة العامل في تحقيق جودة الصيانة المطلوبة.</td>
+                    <td class="border border-gray-300 p-3 text-center">
+                        <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center" oninput="validateInput(this); sum();">
+                    </td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="text" class="w-full border border-gray-300 rounded-sm p-1">
+                    </td>
+                </tr>
 
-            <tr class="bg-gray-100">
-              <td class="border border-gray-200 px-4 py-2 font-semibold">بداية فترة التقييم</td>
-              <td id="start-date" class="border border-gray-200 px-4 py-2 bg-gray-50"></td>
-              <td class="border border-gray-200 px-4 py-2 font-semibold">نهاية فترة التقييم</td>
-              <td id="end-date" class="border border-gray-200 px-4 py-2 bg-gray-50"></td>
-            </tr>
-          </tbody>
+                <tr>
+                    <td class="border border-gray-300 p-3">الالتزام بتعليمات وتوجيهات الفنيين والمشرفين أثناء العمل.
+                    </td>
+                    <td class="border border-gray-300 p-3 text-center">
+                        <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center" oninput="validateInput(this); sum();">
+                    </td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="text" class="w-full border border-gray-300 rounded-sm p-1">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">الالتزام بتسليم الأعمال بشكل منتظم للوردات التالية.</td>
+                    <td class="border border-gray-300 p-3 text-center">
+                        <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center" oninput="validateInput(this); sum();">
+                    </td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="text" class="w-full border border-gray-300 rounded-sm p-1">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">الحفاظ على أدوات ومعدات الصيانة وسرعة التبليغ عن الأعطال.
+                    </td>
+                    <td class="border border-gray-300 p-3 text-center">
+                        <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center" oninput="validateInput(this); sum();">
+                    </td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="text" class="w-full border border-gray-300 rounded-sm p-1">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">قدرة العامل على التعلم واكتساب مهارات جديدة.</td>
+                    <td class="border border-gray-300 p-3 text-center">
+                        <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center" oninput="validateInput(this); sum();">
+                    </td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="text" class="w-full border border-gray-300 rounded-sm p-1">
+                    </td>
+                </tr>
+
+                <tr class="bg-gray-200 font-semibold">
+                    <td class="border border-gray-300 p-3 text-blue-700">الإجمالي</td>
+                    <td id="totalScore" class="border border-gray-300 p-3 text-center text-blue-700">0</td>
+                    <td id="evaluationLevel" class="border border-gray-300 p-3 text-center text-blue-700">—</td>
+                </tr>
+            </tbody>
         </table>
-      </div>
+        <!--QESTIONS 111 -------->
+        <div class="col-span-2 mt-4 border border-gray-300 rounded-sm shadow-sm bg-white p-4 text-right space-y-4">
+            <!-- QUSTION 1 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">هل العامل على علم بخطوات العمل وإجراءاته؟</label>
+                <div class="flex items-center gap-4">
+                    <label><input type="radio" name="q1" class="accent-blue-500"> نعم</label>
+                    <label><input type="radio" name="q1" class="accent-blue-500"> لا</label>
+                </div>
+            </div>
+
+            <!-- QUSTION 2 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">هل يوجد معدلات هناك مرتفعة أثناء تواجده خلال الوردية؟ <span
+                        class="text-sm text-gray-500">*غير أعطال للكِينة*</span></label>
+                <div class="flex items-center gap-4">
+                    <label><input type="radio" name="q2" class="accent-blue-500"> نعم</label>
+                    <label><input type="radio" name="q2" class="accent-blue-500"> لا</label>
+                </div>
+            </div>
+
+            <!--QUSTION 3 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">في حالة الإجابة بـ"نعم" يرجى تحديد البرنامج التدريبي
+                    المطلوب:</label>
+                <input type="text" class="border border-gray-300 rounded-sm p-2 w-1/2">
+            </div>
+
+            <!-- QUSTION 4 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">من وجهة نظرك "القيمة" هل يحتاج العامل للتدريب؟</label>
+                <div class="flex items-center gap-4">
+                    <label><input type="radio" name="q3" class="accent-blue-500"> نعم</label>
+                    <label><input type="radio" name="q3" class="accent-blue-500"> لا</label>
+                </div>
+            </div>
+
+            <!-- QUSTION 5 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">في حالة الإجابة بـ"نعم" يرجى تقدير الفترة الزمنية المتوقعة
+                    للترقي:</label>
+                <input type="text" class="border border-gray-300 rounded-sm p-2 w-1/2">
+            </div>
+
+            <!-- QUSTION 6 -->
+            <div class="flex items-center justify-between border-b pb-2">
+                <label class="text-gray-700 font-medium">في حالة الإجابة بـ"لا" يرجى شرح الأسباب:</label>
+                <input type="text" class="border border-gray-300 rounded-sm p-2 w-1/2">
+            </div>
+        </div>
+        <!--QESTIONS 222 -->
+        <div class="col-span-2  border border-gray-300 rounded-sm shadow-sm bg-white p-4 text-right space-y-4">
+            <div class="flex items-center justify-between border-b pb-2">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                    توصية الرئيس المباشر <span class="text-sm text-gray-500">* ضع إشارة في المكان المناسب *</span>
+                </h2>
+
+                <div class="flex items-center gap-6 mb-4">
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="contract" class="accent-blue-600">
+                        <span>يجدد عقده</span>
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="contract" class="accent-blue-600">
+                        <span>لا يجدد عقده</span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                    إذا كان التقييم "ضعيف" وكانت توصيتك برفضه في العمل اشرح الأسباب:
+                </label>
+                <textarea class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" rows="3" placeholder="اكتب الأسباب هنا..."></textarea>
+            </div>
+        </div>
+        <!--Footer-->
+        <footer class="col-span-2   pt-4 text-center text-sm text-gray-600">
+            <p class="mb-1">
+                نؤمن أن التطوير المستمر يبدأ من التقييم البنّاء والتقدير العادل للجهود المبذولة 🌟
+            </p>
+            <p class="text-gray-500">
+                إدارة الموارد البشرية - شركة <span class="font-semibold text-blue-600">الجيزة باور</span>
+            </p>
+        </footer>
     </div>
 
-    <div class="col-span-2 text-center">
-      <p>تقييم الأداء الربع سنوى من 1 إلى 10</p>
+    <!-- Modal Alert -->
+    <div id="alertModal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg w-80 text-center p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">تنبيه</h2>
+            <p id="modalMessage" class="text-gray-600 mb-4"></p>
+            <button onclick="closeModal()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+      تم
+    </button>
+        </div>
     </div>
+    <!--The Style---------------------------------------------------------------------------------------------------------------->
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.2s ease-out;
+        }
+        
+        body {
+            font-family: "Cairo", sans-serif;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 90px;
+        }
+        
+        .grid-1 {
+            width: 50% !important;
+        }
+    </style>
 
-    <!-- Rating Table -->
-    <table class="min-w-full border border-gray-300 text-sm text-right bg-white shadow-sm rounded-sm col-span-2">
-      <thead class="bg-gray-100 font-semibold">
-        <tr>
-          <th class="border border-gray-300 p-3 w-1/2 font-semibold">عامل التقييم</th>
-          <th class="border border-gray-300 p-3 w-1/6 font-semibold text-center">التقييم (0–10)</th>
-          <th class="border border-gray-300 p-3 w-1/3 font-semibold text-center">ملاحظات</th>
-        </tr>
-      </thead>
-      <tbody id="ratingTable">
-        <tr>
-          <td class="border border-gray-300 p-3">مدى مساهمة العامل في تحقيق جودة الصيانة المطلوبة.</td>
-          <td class="border border-gray-300 p-3 text-center">
-            <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center"
-              oninput="validateInput(this); sum();">
-          </td>
-          <td class="border border-gray-300 p-3">
-            <input type="text" class="w-full border border-gray-300 rounded-sm p-1" placeholder="أدخل الملاحظات">
-          </td>
-        </tr>
+    <script>
+        // Set dynamic quarter and dates
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const month = today.getMonth() + 1;
+            const year = today.getFullYear();
 
-        <tr>
-          <td class="border border-gray-300 p-3">الالتزام بتعليمات وتوجيهات الفنيين والمشرفين أثناء العمل.</td>
-          <td class="border border-gray-300 p-3 text-center">
-            <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center"
-              oninput="validateInput(this); sum();">
-          </td>
-          <td class="border border-gray-300 p-3">
-            <input type="text" class="w-full border border-gray-300 rounded-sm p-1" placeholder="أدخل الملاحظات">
-          </td>
-        </tr>
+            let quarter = 0,
+                startMonth = 0,
+                endMonth = 0;
 
-        <tr>
-          <td class="border border-gray-300 p-3">الالتزام بتسليم الأعمال بشكل منتظم للوردات التالية.</td>
-          <td class="border border-gray-300 p-3 text-center">
-            <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center"
-              oninput="validateInput(this); sum();">
-          </td>
-          <td class="border border-gray-300 p-3">
-            <input type="text" class="w-full border border-gray-300 rounded-sm p-1" placeholder="أدخل الملاحظات">
-          </td>
-        </tr>
+            if (month >= 1 && month <= 3) {
+                quarter = 1;
+                startMonth = 1;
+                endMonth = 3;
+            } else if (month >= 4 && month <= 6) {
+                quarter = 2;
+                startMonth = 4;
+                endMonth = 6;
+            } else if (month >= 7 && month <= 9) {
+                quarter = 3;
+                startMonth = 7;
+                endMonth = 9;
+            } else {
+                quarter = 4;
+                startMonth = 10;
+                endMonth = 12;
+            }
 
-        <tr>
-          <td class="border border-gray-300 p-3">الحفاظ على أدوات ومعدات الصيانة وسرعة التبليغ عن الأعطال.</td>
-          <td class="border border-gray-300 p-3 text-center">
-            <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center"
-              oninput="validateInput(this); sum();">
-          </td>
-          <td class="border border-gray-300 p-3">
-            <input type="text" class="w-full border border-gray-300 rounded-sm p-1" placeholder="أدخل الملاحظات">
-          </td>
-        </tr>
+            const startDate = new Date(year, startMonth - 1, 1);
+            const endDate = new Date(year, endMonth, 0);
 
-        <tr>
-          <td class="border border-gray-300 p-3">قدرة العامل على التعلم واكتساب مهارات جديدة.</td>
-          <td class="border border-gray-300 p-3 text-center">
-            <input type="number" min="0" max="10" class="score border border-gray-300 rounded-sm p-1 w-16 text-center"
-              oninput="validateInput(this); sum();">
-          </td>
-          <td class="border border-gray-300 p-3">
-            <input type="text" class="w-full border border-gray-300 rounded-sm p-1" placeholder="أدخل الملاحظات">
-          </td>
-        </tr>
+            const formatDate = (date) => {
+                const d = String(date.getDate()).padStart(2, '0');
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                const y = date.getFullYear();
+                return `${d}/${m}/${y}`;
+            };
 
-        <tr class="bg-gray-100 font-semibold">
-          <td class="border border-gray-300 p-3 text-blue-700">الإجمالي</td>
-          <td id="totalScore" class="border border-gray-300 p-3 text-center text-blue-700">0</td>
-          <td id="evaluationLevel" class="border border-gray-300 p-3 text-center text-blue-700">—</td>
-        </tr>
-      </tbody>
-    </table>
+            document.getElementById('quarter-info').textContent = `التقييم الربع ${quarter} لعام ${year}`;
+            document.getElementById('start-date').textContent = formatDate(startDate);
+            document.getElementById('end-date').textContent = formatDate(endDate);
+        });
 
-  </div>
-
-  <style>
-    body {
-      font-family: "Cairo", sans-serif;
-    }
-
-    .logo {
-      width: 100px;
-      height: 90px;
-    }
-
-    .grid-1 {
-      width: 50% !important;
-    }
-  </style>
-
-  <script>
-    // Set dynamic quarter and dates
-    window.addEventListener('DOMContentLoaded', () => {
-      const today = new Date();
-      const month = today.getMonth() + 1;
-      const year = today.getFullYear();
-
-      let quarter = 0, startMonth = 0, endMonth = 0;
-
-      if (month >= 1 && month <= 3) {
-        quarter = 1; startMonth = 1; endMonth = 3;
-      } else if (month >= 4 && month <= 6) {
-        quarter = 2; startMonth = 4; endMonth = 6;
-      } else if (month >= 7 && month <= 9) {
-        quarter = 3; startMonth = 7; endMonth = 9;
-      } else {
-        quarter = 4; startMonth = 10; endMonth = 12;
-      }
-
-      const startDate = new Date(year, startMonth - 1, 1);
-      const endDate = new Date(year, endMonth, 0);
-
-      const formatDate = (date) => {
-        const d = String(date.getDate()).padStart(2, '0');
-        const m = String(date.getMonth() + 1).padStart(2, '0');
-        const y = date.getFullYear();
-        return `${d}/${m}/${y}`;
-      };
-
-      document.getElementById('quarter-info').textContent = `التقييم الربع ${quarter} لعام ${year}`;
-      document.getElementById('start-date').textContent = formatDate(startDate);
-      document.getElementById('end-date').textContent = formatDate(endDate);
-    });
-
-    // Select logic
-    const select1 = document.getElementById('countries1');
-    const select2 = document.getElementById('countries2');
-    const select3 = document.getElementById('countries3');
-    select2.disabled = true;
-    select3.disabled = true;
-
-    select1.addEventListener('change', () => {
-      if (select1.value) {
-        select2.disabled = false;
-      } else {
+        // Select logic
+        const select1 = document.getElementById('countries1');
+        const select2 = document.getElementById('countries2');
+        const select3 = document.getElementById('countries3');
         select2.disabled = true;
         select3.disabled = true;
-        select2.value = "";
-        select3.value = "";
-      }
-    });
 
-    select2.addEventListener('change', () => {
-      if (select2.value) {
-        select3.disabled = false;
-      } else {
-        select3.disabled = true;
-        select3.value = "";
-      }
-    });
+        select1.addEventListener('change', () => {
+            if (select1.value) {
+                select2.disabled = false;
+            } else {
+                select2.disabled = true;
+                select3.disabled = true;
+                select2.value = "";
+                select3.value = "";
+            }
+        });
 
-    // Input validation
-    function validateInput(input) {
-      input.value = input.value.replace(/[^0-9]/g, '');
-      if (input.value !== '' && (input.value < 0 || input.value > 10)) {
-        alert("يُسمح فقط بإدخال رقم من 0 إلى 10");
-        input.value = '';
-      }
-    }
+        select2.addEventListener('change', () => {
+            if (select2.value) {
+                select3.disabled = false;
+            } else {
+                select3.disabled = true;
+                select3.value = "";
+            }
+        });
 
-    // Calculate total and evaluation
-    function sum() {
-      let total = 0;
-      let count = 0;
-      document.querySelectorAll(".score").forEach(input => {
-        const val = Number(input.value);
-        if (!isNaN(val) && val >= 0 && val <= 10) {
-          total += val;
-          count++;
+        // Input validation
+        // function validateInput(input) {
+        //     input.value = input.value.replace(/[^0-9]/g, '');
+        //     if (input.value !== '' && (input.value < 0 || input.value > 10)) {
+        //         alert("يُسمح فقط بإدخال رقم من 0 إلى 10");
+        //         input.value = '';
+        //     }
+        // }
+
+        function validateInput(input) {
+            const value = Number(input.value);
+            if (value > 10) {
+                input.value = 10;
+                showModal("⚠️ لا يمكن إدخال رقم أكبر من 10");
+            } else if (value < 0) {
+                input.value = 0;
+                showModal("⚠️ لا يمكن إدخال رقم أقل من 0");
+            }
         }
-      });
-      document.getElementById("totalScore").textContent = total;
 
-      const avg = total / (count || 1);
-      let level = "—";
-      if (avg >= 9) level = "ممتاز";
-      else if (avg >= 7) level = "جيد جداً";
-      else if (avg >= 5) level = "جيد";
-      else if (avg > 0) level = "ضعيف";
+        function showModal(message) {
+            const modalMessage = document.getElementById("modalMessage");
+            modalMessage.textContent = message;
+            document.getElementById("alertModal").classList.remove("hidden");
+        }
 
-      document.getElementById("evaluationLevel").textContent = level;
-    }
-  </script>
+        function closeModal() {
+            document.getElementById("alertModal").classList.add("hidden");
+        }
+        // Calculate total and evaluation
+        function sum() {
+            let total = 0;
+            let count = 0;
+            document.querySelectorAll(".score").forEach(input => {
+                const val = Number(input.value);
+                if (!isNaN(val) && val >= 0 && val <= 10) {
+                    total += val;
+                    count++;
+                }
+            });
+            document.getElementById("totalScore").textContent = total;
+
+            const avg = total / (count || 1);
+            let level = "—";
+            if (avg >= 9) level = "ممتاز";
+            else if (avg >= 7) level = "جيد جداً";
+            else if (avg >= 5) level = "جيد";
+            else if (avg > 0) level = "ضعيف";
+
+            document.getElementById("evaluationLevel").textContent = level;
+        }
+    </script>
 </body>
 
 </html>
